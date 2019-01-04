@@ -1,6 +1,10 @@
 #!/usr/bin/env node
+const path = require("path");
+
 const flores = require("flores");
 const meow = require("meow");
+
+const getOptions = require("./get-options");
 
 const AVAILABLE_COMMANDS = ["build", "serve", "watch"];
 
@@ -8,19 +12,30 @@ const AVAILABLE_COMMANDS = ["build", "serve", "watch"];
   try {
     const cli = meow(`
       Usage
-        $ flores <command>
+        $ flores <command> [--config]
 
-        - command: The command to run (build, server, or watch).
+      There are three available commands:
+        - build: Generate the website.
+        - serve: Generate the website and start the server.
+        - watch: Start the development server and watch for any file changes.
 
-      Build the site for production:
+      Options
+        --config, -c: The path to website configuration file. It will look for
+                      "site.config.js" if non given.
+
+      Examples
         $ flores build
-
-      Build the site and start the development server:
-        $ flores serve
-
-      Start the development server and watch for file changes:
-        $ flores watch
-    `);
+        $ flores serve --config my-config.js
+        $ flores watch -c my-config.js
+    `, {
+      flags: {
+        config: {
+          type: "string",
+          alias: "c",
+          default: undefined
+        }
+      }
+    });
 
     if (cli.input.length === 0) {
       throw new Error("The <command> argument is missing.");
@@ -29,10 +44,12 @@ const AVAILABLE_COMMANDS = ["build", "serve", "watch"];
     const command = cli.input[0].toLowerCase();
 
     if (!AVAILABLE_COMMANDS.includes(command)) {
-      throw new Error(`The <${command}> command is not available.`);
+      throw new Error(`The "${command}" command is not available.`);
     }
 
-    await flores[command]();
+    const options = await getOptions(cli.flags.config);
+
+    await flores[command](options);
   } catch(error) {
     console.error(error.message);
     process.exit(1);
