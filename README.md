@@ -1,5 +1,8 @@
 # Flores CLI
 
+[![Build Status](https://badgen.net/travis/risan/flores-cli)](https://travis-ci.org/risan/flores-cli)
+[![Test Covarage](https://badgen.net/codecov/c/github/risan/flores-cli)](https://codecov.io/gh/risan/flores-cli)
+[![Greenkeeper](https://badges.greenkeeper.io/risan/flores-cli.svg)](https://greenkeeper.io)
 [![Latest Version](https://badgen.net/npm/v/flores-cli)](https://www.npmjs.com/package/flores-cli)
 
 Minimalist static site generator.
@@ -7,7 +10,7 @@ Minimalist static site generator.
 ## Install
 
 ```bash
-$ npm install --global flores-cli
+$ npm install flores-cli
 ```
 
 ## Usage
@@ -16,18 +19,21 @@ $ npm install --global flores-cli
 $ flores --help
 
   Usage
-    $ flores <command>
+    $ flores <command> [--config]
 
-    - command: The command to run (build, server, or watch).
+  There are three available commands:
+    - build: Generate the website.
+    - serve: Generate the website and start the server.
+    - watch: Start the development server and watch for any file changes.
 
-  Build the site for production:
+  Options
+    --config, -c: The path to website configuration file. It will look for
+                  "site.config.js" if non given.
+
+  Examples
     $ flores build
-
-  Build the site and start the development server:
-    $ flores serve
-
-  Start the development server and watch for file changes:
-    $ flores watch
+    $ flores serve --config my-config.js
+    $ flores watch -c my-config.js
 ```
 
 ## Related
