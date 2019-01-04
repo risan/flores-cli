@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-const path = require("path");
-
+/* eslint no-console: "off" */
 const flores = require("flores");
 const meow = require("meow");
 
@@ -10,7 +9,8 @@ const AVAILABLE_COMMANDS = ["build", "serve", "watch"];
 
 (async () => {
   try {
-    const cli = meow(`
+    const cli = meow(
+      `
       Usage
         $ flores <command> [--config]
 
@@ -27,15 +27,17 @@ const AVAILABLE_COMMANDS = ["build", "serve", "watch"];
         $ flores build
         $ flores serve --config my-config.js
         $ flores watch -c my-config.js
-    `, {
-      flags: {
-        config: {
-          type: "string",
-          alias: "c",
-          default: undefined
+    `,
+      {
+        flags: {
+          config: {
+            type: "string",
+            alias: "c",
+            default: undefined
+          }
         }
       }
-    });
+    );
 
     if (cli.input.length === 0) {
       throw new Error("The <command> argument is missing.");
@@ -50,7 +52,7 @@ const AVAILABLE_COMMANDS = ["build", "serve", "watch"];
     const options = await getOptions(cli.flags.config);
 
     await flores[command](options);
-  } catch(error) {
+  } catch (error) {
     console.error(error.message);
     process.exit(1);
   }

@@ -1,3 +1,4 @@
+/* eslint global-require: "off", import/no-dynamic-require: "off" */
 const fs = require("fs");
 const path = require("path");
 const util = require("util");
@@ -14,7 +15,7 @@ const isExists = async file => {
     await access(file, fs.constants.R_OK);
 
     return true;
-  } catch(error) {
+  } catch (error) {
     return false;
   }
 };
@@ -26,15 +27,17 @@ const isExists = async file => {
  */
 const loadConfig = file => {
   try {
-    const config =  require(path.resolve(file));
+    const config = require(path.resolve(file));
 
     if (typeof config !== "object") {
       throw new Error("Must export an object");
     }
 
     return config;
-  } catch(error) {
-    throw new Error(`Error while reading the config file "${file}": ${error.message}`);
+  } catch (error) {
+    throw new Error(
+      `Error while reading the config file "${file}": ${error.message}`
+    );
   }
 };
 
