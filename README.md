@@ -7,6 +7,10 @@
 
 Minimalist static site generator.
 
+## Documentation
+
+Checkout [Flores repository](https://github.com/risan/flores#flores) for a complete documentation.
+
 ## Install
 
 ```bash
@@ -39,6 +43,7 @@ $ flores --help
 ## Related
 
 * [flores](https://github.com/risan/flores): The JavaScript API for this CLI tool.
+* [flores-starter](https://github.com/risan/flores-starter): Flores starter template for blog.
 
 ## License
 
