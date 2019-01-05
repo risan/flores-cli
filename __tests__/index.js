@@ -6,7 +6,7 @@ test("it throws error if command argument is missing", async () => {
 
   try {
     await execa("./src/index.js");
-  } catch(error) {
+  } catch (error) {
     expect(error.code).toBe(1);
     expect(error.message).toMatch(/missing/i);
   }
@@ -17,7 +17,7 @@ test("it throws error if command is not available", async () => {
 
   try {
     await execa("./src/index.js", ["foo"]);
-  } catch(error) {
+  } catch (error) {
     expect(error.code).toBe(1);
     expect(error.message).toMatch(/not available/i);
   }
