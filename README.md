@@ -5,11 +5,11 @@
 [![Greenkeeper](https://badges.greenkeeper.io/risan/flores-cli.svg)](https://greenkeeper.io)
 [![Latest Version](https://badgen.net/npm/v/flores-cli)](https://www.npmjs.com/package/flores-cli)
 
-Minimalist static site generator.
+The CLI tool for the [Flores](https://github.com/risan/flores) API.
 
 ## Documentation
 
-Checkout [Flores repository](https://github.com/risan/flores#flores) for a complete documentation.
+The API documentation and the guide on how to get started are available on [Flores repository](https://github.com/risan/flores#flores).
 
 ## Install
 
@@ -27,12 +27,11 @@ $ flores --help
 
   There are three available commands:
     - build: Generate the website.
-    - serve: Generate the website and start the server.
-    - watch: Start the development server and watch for any file changes.
+    - serve: Generate the website and preview it with the built-in server.
+    - watch: Regenerate the website and reload the browser automatically on file changes.
 
   Options
-    --config, -c: The path to website configuration file. It will look for
-                  "site.config.js" if non given.
+    --config, -c: The path to website configuration file, default to "site.config.js".
 
   Examples
     $ flores build
@@ -42,8 +41,9 @@ $ flores --help
 
 ## Related
 
-* [flores](https://github.com/risan/flores): The JavaScript API for this CLI tool.
-* [flores-starter](https://github.com/risan/flores-starter): Flores starter template for blog.
+* [flores](https://github.com/risan/flores): The programmatic API for this CLI tool.
+* [flores-create](https://github.com/risan/flores-create): The CLI tool for creating a new Flores website.
+* [flores-starter](https://github.com/risan/flores-starter): The starter template for Flores website.
 
 ## License
 
