@@ -1,6 +1,6 @@
 {
   "name": "flores-cli",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "description": "The CLI tool for the Flores API.",
   "keywords": [
     "flores",
