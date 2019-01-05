@@ -16,12 +16,11 @@ const AVAILABLE_COMMANDS = ["build", "serve", "watch"];
 
       There are three available commands:
         - build: Generate the website.
-        - serve: Generate the website and start the server.
-        - watch: Start the development server and watch for any file changes.
+        - serve: Generate the website and preview it with the built-in server.
+        - watch: Regenerate the website and reload the browser automatically on file changes.
 
       Options
-        --config, -c: The path to website configuration file. It will look for
-                      "site.config.js" if non given.
+        --config, -c: The path to website configuration file, default to "site.config.js".
 
       Examples
         $ flores build
